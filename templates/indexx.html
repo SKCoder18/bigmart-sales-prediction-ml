@@ -4,771 +4,168 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Bigmart Sales Prediction</title>
-  <link rel="stylesheet" href="styless.css" />
+
+  <!-- ✅ FIXED: Flask static path -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='styless.css') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
 <body>
-  <!-- Navbar: hidden initially -->
-  <header id="navbar" style="display: none;">
-    <h1 class="logo">🛒Big-Mart Sales Predictor</h1>
-    <div class="container">
-      <nav>
-        <ul class="nav-links">
-          <!-- Home Link now links to About Section -->
-          <li><a href="#about-section" id="home-link"><i class="fas fa-home"></i>Home</a></li>
-          <li><a href="#prediction-form-section" id="predict-link"><i class="fas fa-chart-line"></i>Predict</a></li>
-          <li><a href="#" id="products-link"><i class="fas fa-box-open"></i>Products</a></li>
-          <li><a href="#" id="saved-link"><i class="fas fa-save"></i>Save</a></li>
-          <li><a href="#" id="logout-link"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
 
-  <!-- Main content -->
-  <section class="card-container single-card-center">
-    <!-- Heading outside the login card -->
-    <h1 id="login-heading" class="login-title">🛒 Big-Mart Sales Predictor</h1>
+<!-- Navbar -->
+<header id="navbar" style="display: none;">
+  <h1 class="logo">🛒Big-Mart Sales Predictor</h1>
+  <div class="container">
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#about-section" id="home-link"><i class="fas fa-home"></i>Home</a></li>
+        <li><a href="#prediction-form-section" id="predict-link"><i class="fas fa-chart-line"></i>Predict</a></li>
+        <li><a href="#" id="products-link"><i class="fas fa-box-open"></i>Products</a></li>
+        <li><a href="#" id="saved-link"><i class="fas fa-save"></i>Save</a></li>
+        <li><a href="#" id="logout-link"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-    <!-- Login card -->
-      <button id="register-button" class="register-button">Sign Up</button>
-      <div class="card right-card" id="login-card" style="position: relative;">
-      <h2 id="form-heading">Login</h2>
-      <form id="login-form">
-        <div class="form-group">
-          <label for="username">Username:</label>
-          <input type="text" id="username" name="username" required>
-        </div>
+<!-- Login -->
+<section class="card-container single-card-center">
+  <h1 id="login-heading" class="login-title">🛒 Big-Mart Sales Predictor</h1>
 
-        <div class="form-group">
-          <label for="password">Password:</label>
-          <input type="password" id="password" name="password" required>
-        </div>
+  <button id="register-button" class="register-button">Sign Up</button>
 
-        <button type="submit">Login</button>
-      </form>
-      <form id="register-form" style="display:none;">
-        <div class="form-group">
-          <label for="reg-username">Username:</label>
-          <input type="text" id="reg-username" name="reg-username" required>
-        </div>
+  <div class="card right-card" id="login-card">
+    <h2 id="form-heading">Login</h2>
 
-        <div class="form-group">
-          <label for="reg-password">Password:</label>
-          <input type="password" id="reg-password" name="reg-password" required>
-        </div>
-
-        <button type="submit">Sign Up</button>
-      </form>
-    </div>
-
-    <!-- About Section (No Card Style, Normal Section) -->
-    <div id="about-section" style="display: none; text-align: center; margin-top: 50px;">
-      <h2>About</h2>
-      <p>
-        Big-Mart Sales Predictor is a machine learning-based web application that predicts future sales 
-        based on historical data.</p> 
-        <p>It helps businesses optimize their inventory, and make 
-        informed decisions.
-      </p>
-      <center><h2>Work Done</h2></center>
-      <p>We've took the dataset named Big Mart Sale Data dataset from Kaggle open source repository 
-        and we preprocessed it.</p>
-      <h3>Preprocessing:</h3>
-      <p>By using Python we followed the following steps to clean and preprocess the data
-            <strong>Load the data,
-            Handling missing values,
-            Handling duplicate data,
-            Handling outliers,
-            Encoding Categorical Variables,
-            Final Check on Cleaned Data.</strong></p>
-        <img src="C:\Users\saiku\OneDrive\Desktop\bigmartmid\src\with.png" width="450px" height="300px">
-        <img src="C:\Users\saiku\OneDrive\Desktop\bigmartmid\src\out.png" width="450px" height="300px">
-        <p>After that the dataset is divided into test and train datasets.</p>
-        <h3>Model Selection:</h3>
-        <p>Then we've selected the models to train. They are <strong>Linear regression,
-          Decision Tree, Random Forest, XGboost.</strong>
-        </p>
-        <h3>Model Training:</h3>
-        <img src="C:\Users\saiku\OneDrive\Desktop\bigmartmid\src\litrain.png" width="450px" height="300px">
-        <img src="C:\Users\saiku\OneDrive\Desktop\bigmartmid\src\ligr.png" width="450px" height="300px">
-        <img src="C:\Users\saiku\OneDrive\Desktop\bigmartmid\src\dttrain.png" width="450px" height="300px">
-        <img src="C:\Users\saiku\OneDrive\Desktop\bigmartmid\src\dtgr.png" width="450px" height="300px">
-        <img src="C:\Users\saiku\OneDrive\Desktop\bigmartmid\src\rftrain.png" width="450px" height="300px">
-        <img src="C:\Users\saiku\OneDrive\Desktop\bigmartmid\src\rfgr.png" width="450px" height="300px">
-        <img src="C:\Users\saiku\OneDrive\Desktop\bigmartmid\src\xgtrain.png" width="450px" height="300px">
-        <img src="C:\Users\saiku\OneDrive\Desktop\bigmartmid\src\xggr.png" width="450px" height="300px">
-        <h3>Final Selected Model:</h3>
-        <p>After analyzing the evaluation metrics and graphs we selected the best model i.e <strong>
-          Random Forest</strong></p>
-      </div>
-  </section>
-
-  <main id="main-content">
-    <!-- Prediction Form initially hidden -->
-    <section id="prediction-form-section" style="display: none;">
-    <h2>🛒 Predict Sales</h2>
-    <div id="predict-search" style="margin-bottom: 20px; text-align: center;">
-      <input type="text" id="predict-search-item-id" placeholder="Search by Item Identifier" style="padding: 8px; margin-right: 10px; width: 200px;" />
-      <input type="number" id="predict-search-established-year" placeholder="Established Year" style="padding: 8px; width: 150px;" />
-      <button id="predict-search-button" style="padding: 8px 12px; margin-left: 10px; cursor: pointer;">Search</button>
-      <button id="predict-clear-button" style="padding: 8px 12px; margin-left: 10px; cursor: pointer;">Clear</button>
-    </div>
-    <div id="predict-search-result" style="margin-bottom: 20px;"></div>
-    <form id="prediction-form">
-      <input type="text" id="Item_Identifier" placeholder="Item Identifier" required>
-      <input type="number" step="0.01" id="Item_Weight" placeholder="Item Weight" required>
-      <select id="Item_Fat_Content">
-          <option value="Low Fat">Low Fat</option>
-          <option value="Regular">Regular</option>
-      </select>
-      <input type="number" step="0.0001" id="Item_Visibility" placeholder="Item Visibility" required>
-      <input type="text" id="Item_Type" placeholder="Item Type" required>
-      <input type="number" step="0.01" id="Item_MRP" placeholder="Item MRP" required>
-      <input type="text" id="Outlet_Identifier" placeholder="Outlet Identifier" required>
-      <input type="number" id="Outlet_Establishment_Year" placeholder="Establishment Year" required>
-      <input type="text" id="Outlet_Size" placeholder="Outlet Size" required>
-      <input type="text" id="Outlet_Location_Type" placeholder="Location Type" required>
-      <input type="text" id="Outlet_Type" placeholder="Outlet Type" required>
-      <button type="submit">Predict Sales</button>
-      <button id="save-prediction-button" type="button" style="background-color: #003366; color: white; padding: 6px 12px; font-size: 0.9rem; border: none; border-radius: 4px; cursor: pointer; margin-top: 10px;">Save Prediction</button>
-<!-- Removed the predicted sales text box -->
+    <form id="login-form">
+      <input type="text" id="username" required>
+      <input type="password" id="password" required>
+      <button type="submit">Login</button>
     </form>
 
-    <!-- Add a section after the form -->
-    <div id="after-form-section" style="margin-top: 20px; text-align: center;">
-      <h3>📊 Prediction Results</h3>
-      <div id="result"></div>
-    </div>
-    <script src="script.js"></script>
-    <script>
-      document.getElementById("prediction-form").addEventListener("submit", async function (e) {
-        e.preventDefault();
+    <form id="register-form" style="display:none;">
+      <input type="text" id="reg-username" required>
+      <input type="password" id="reg-password" required>
+      <button type="submit">Sign Up</button>
+    </form>
+  </div>
+</section>
 
-        const formData = {
-          Item_Identifier: document.getElementById("Item_Identifier").value,
-          Item_Weight: document.getElementById("Item_Weight").value,
-          Item_Fat_Content: document.getElementById("Item_Fat_Content").value,
-          Item_Visibility: document.getElementById("Item_Visibility").value,
-          Item_Type: document.getElementById("Item_Type").value,
-          Item_MRP: document.getElementById("Item_MRP").value,
-          Outlet_Identifier: document.getElementById("Outlet_Identifier").value,
-          Outlet_Establishment_Year: document.getElementById("Outlet_Establishment_Year").value,
-          Outlet_Size: document.getElementById("Outlet_Size").value,
-          Outlet_Location_Type: document.getElementById("Outlet_Location_Type").value,
-          Outlet_Type: document.getElementById("Outlet_Type").value,
-        };
+<!-- About -->
+<div id="about-section" style="display:none; text-align:center; margin-top:50px;">
+  <h2>About</h2>
 
-        try {
-          console.log("Sending prediction request...");
-          const response = await fetch("http://127.0.0.1:5001/predict", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(formData),
-          });
+  <!-- ✅ FIXED IMAGE PATHS -->
+  <img src="{{ url_for('static', filename='images/with.png') }}" width="450">
+  <img src="{{ url_for('static', filename='images/out.png') }}" width="450">
 
-          if (!response.ok) {
-            throw new Error(`Server error: ${response.status} - ${response.statusText}`);
-          }
+</div>
 
-          const data = await response.json();
-          console.log("Prediction response:", data);
+<!-- Prediction -->
+<section id="prediction-form-section" style="display:none;">
+  <h2>🛒 Predict Sales</h2>
 
-          if (data.Item_Outlet_Sales !== undefined) {
-            document.getElementById("prediction-result").textContent = `Predicted Sales: ₹${data.Item_Outlet_Sales}`;
-          } else {
-            document.getElementById("prediction-result").textContent = data.error || "Prediction failed";
-          }
-        } catch (error) {
-          console.error("Error during prediction:", error);
-          document.getElementById("prediction-result").textContent = `Error: ${error.message}`;
-        }
-      });
-    </script>
-    </section>
-  </main>
+  <form id="prediction-form">
+    <input type="text" id="Item_Identifier" required>
+    <input type="number" id="Item_Weight" required>
 
-  <!-- Add the products section to the HTML -->
-  <section id="products-section" style="display: none; margin-top: 20px;">
-    <h2>Products</h2>
-    <!-- Add search bar and established year input -->
-    <div id="products-search" style="margin-bottom: 20px; text-align: center;">
-      <input type="text" id="search-item-id" placeholder="Search by Item Identifier" style="padding: 8px; margin-right: 10px; width: 200px;" />
-      <input type="number" id="search-established-year" placeholder="Established Year" style="padding: 8px; width: 150px;" />
-      <button id="search-button" style="padding: 8px 12px; margin-left: 10px; cursor: pointer;">Search</button>
-      <button id="clear-button" style="padding: 8px 12px; margin-left: 10px; cursor: pointer;">Clear</button>
-    </div>
-    <div id="products-container" class="products-container"></div>
-  </section>
+    <select id="Item_Fat_Content">
+      <option>Low Fat</option>
+      <option>Regular</option>
+    </select>
 
-  <!-- Add the saved predictions section to the HTML -->
-  
+    <input type="number" id="Item_Visibility" required>
+    <input type="text" id="Item_Type" required>
+    <input type="number" id="Item_MRP" required>
 
-  <!-- Footer -->
-  <footer id="footer" style="display: none;">
-    <p>&copy; Big-Mart Sales Predictor. All rights reserved.</p>
-  </footer>
+    <input type="text" id="Outlet_Identifier" required>
+    <input type="number" id="Outlet_Establishment_Year" required>
 
-  <script>
-    let allProductsForPredict = [];
+    <input type="text" id="Outlet_Size" required>
+    <input type="text" id="Outlet_Location_Type" required>
+    <input type="text" id="Outlet_Type" required>
 
-    function renderPredictSearchResult(product) {
-      const container = document.getElementById("predict-search-result");
-      container.innerHTML = "";
+    <button type="submit">Predict</button>
+  </form>
 
-      if (!product) {
-        container.innerHTML = "<p>No product found.</p>";
-        return;
-      }
+  <!-- ✅ FIXED RESULT ID -->
+  <div id="result"></div>
+</section>
 
-      const card = document.createElement("div");
-      card.className = "product-card";
+<!-- Footer -->
+<footer id="footer" style="display:none;">
+  <p>© Big-Mart Sales Predictor</p>
+</footer>
 
-      card.innerHTML = `
-        <h3>${product.id}</h3>
-        <p><strong>Name:</strong> ${product.name}</p>
-        <p><strong>Weight:</strong> ${product.weight ? product.weight : "N/A"} kg</p>
-        <p><strong>Fat Content:</strong> ${product.fatContent}</p>
-        <p><strong>Price:</strong> ₹${Math.round(product.price)}</p>
-        <p><strong>Established Year:</strong> ${product.establishedYear ? product.establishedYear : "N/A"}</p>
-        <p><strong>Item Fat Content:</strong> ${product.fatContent}</p>
-        <p><strong>Item Type:</strong> ${product.name}</p>
-        <p><strong>Item Weight:</strong> ${product.weight ? product.weight : "N/A"}</p>
-        <p><strong>Item MRP:</strong> ₹${Math.round(product.price)}</p>
-        <p><strong>Outlet Establishment Year:</strong> ${product.establishedYear ? product.establishedYear : "N/A"}</p>
-        <button id="select-product-button" style="padding: 8px 12px; margin-top: 10px; cursor: pointer;">Select</button>
-      `;
+<!-- ✅ CLEAN SINGLE SCRIPT -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
 
-      container.appendChild(card);
+  // LOGIN
+  document.getElementById("login-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-      document.getElementById("select-product-button").addEventListener("click", () => {
-        // Fill the prediction form with selected product details
-        document.getElementById("Item_Identifier").value = product.id || "";
-        document.getElementById("Item_Weight").value = product.weight || "";
-        document.getElementById("Item_Fat_Content").value = product.fatContent || "Low Fat";
-        document.getElementById("Item_Type").value = product.name || "";
-        document.getElementById("Item_MRP").value = Math.round(product.price) || "";
-        document.getElementById("Outlet_Establishment_Year").value = product.establishedYear || "";
-        // Set Item_Visibility to 0.01 by default
-        document.getElementById("Item_Visibility").value = product.visibility || 0.01;
-        document.getElementById("Outlet_Identifier").value = product.outletIdentifier || "";
-        document.getElementById("Outlet_Size").value = product.outletSize || "";
-        document.getElementById("Outlet_Location_Type").value = product.outletLocationType || "";
-        document.getElementById("Outlet_Type").value = product.outletType || "";
-      });
+    const res = await fetch("/login", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        username: username.value,
+        password: password.value
+      })
+    });
+
+    const data = await res.json();
+
+    if (data.message === "Login successful") {
+      login-card.style.display = "none";
+      navbar.style.display = "block";
+      about-section.style.display = "block";
     }
-
-    async function fetchProductsForPredict() {
-      console.log("Fetching products for prediction...");
-      try {
-        const response = await fetch("http://127.0.0.1:5001/test-products");
-        console.log("Server response received:", response);
-
-        if (!response.ok) {
-          throw new Error(`Server error: ${response.status} - ${response.statusText}`);
-        }
-
-        const products = await response.json();
-        console.log("Products data:", products);
-
-        if (products.error) {
-          document.getElementById("predict-search-result").innerHTML = `<p>Error loading products: ${products.error}</p>`;
-          return;
-        }
-
-        allProductsForPredict = products;
-        console.log("Products loaded successfully.");
-      } catch (error) {
-        console.error("Error fetching products:", error);
-        document.getElementById("predict-search-result").innerHTML = `<p>Error connecting to server. Please try again later.</p>`;
-      }
-    }
-
-    document.getElementById("predict-search-button").addEventListener("click", () => {
-      const itemId = document.getElementById("predict-search-item-id").value.trim().toLowerCase();
-      const yearInput = document.getElementById("predict-search-established-year").value.trim();
-
-      const foundProduct = allProductsForPredict.find(product => {
-        const matchesId = itemId ? product.id.toLowerCase() === itemId : true;
-        const matchesYear = yearInput ? (product.establishedYear && product.establishedYear.toString() === yearInput) : true;
-        return matchesId && matchesYear;
-      });
-
-      renderPredictSearchResult(foundProduct);
-    });
-
-    document.getElementById("predict-clear-button").addEventListener("click", () => {
-      document.getElementById("predict-search-item-id").value = "";
-      document.getElementById("predict-search-established-year").value = "";
-      document.getElementById("predict-search-result").innerHTML = "";
-    });
-
-    // Fetch products for predict search on page load
-    fetchProductsForPredict();
-  </script>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const loginCard = document.getElementById("login-card");
-      const loginHeading = document.getElementById("login-heading");
-      const registerButton = document.getElementById("register-button");
-      const navbar = document.getElementById("navbar");
-      const footer = document.querySelector("#footer");
-      const aboutSection = document.getElementById("about-section");
-
-      // Login form submission
-      document.getElementById("login-form").addEventListener("submit", async function (e) {
-        e.preventDefault();
-
-        const username = document.getElementById("username").value.trim();
-        const password = document.getElementById("password").value.trim();
-
-        if (!username || !password) {
-          alert("Please enter valid credentials.");
-          return;
-        }
-
-        try {
-          console.log("Attempting to connect to the server...");
-          const response = await fetch("http://127.0.0.1:5001/login", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ username, password }),
-          });
-
-          console.log("Server response received:", response);
-
-          if (!response.ok) {
-            throw new Error(`Server error: ${response.status} - ${response.statusText}`);
-          }
-
-          const data = await response.json();
-          console.log("Response data:", data);
-
-          if (data.message === "Login successful") {
-            // Login successful
-            if (loginCard) loginCard.style.display = "none";
-            if (loginHeading) loginHeading.style.display = "none";
-            if (registerButton) registerButton.style.display = "none";
-
-            if (navbar) navbar.style.display = "block";
-            if (footer) footer.style.display = "block";
-            if (aboutSection) aboutSection.style.display = "block";
-
-            document.body.style.overflow = "auto";
-          } else {
-            alert(data.error || "Login failed");
-          }
-        } catch (error) {
-          console.error("Error connecting to server:", error);
-          alert(`Error connecting to server: ${error.message}. Please try again later.`);
-        }
-      });
-
-      // Fetch products for prediction
-      async function fetchProductsForPredict() {
-        console.log("Fetching products for prediction...");
-        try {
-          const response = await fetch("http://127.0.0.1:5001/test-products");
-          console.log("Server response received:", response);
-
-          if (!response.ok) {
-            throw new Error(`Server error: ${response.status} - ${response.statusText}`);
-          }
-
-          const products = await response.json();
-          console.log("Products data:", products);
-
-          if (products.error) {
-            document.getElementById("predict-search-result").innerHTML = `<p>Error loading products: ${products.error}</p>`;
-            return;
-          }
-
-          allProductsForPredict = products;
-          console.log("Products loaded successfully.");
-        } catch (error) {
-          console.error("Error fetching products:", error);
-          document.getElementById("predict-search-result").innerHTML = `<p>Error connecting to server. Please try again later.</p>`;
-        }
-      }
-
-      // Fetch products on page load
-      fetchProductsForPredict();
-
-      // Handle "Predict" link click
-      document.getElementById("predict-link").addEventListener("click", function (e) {
-        e.preventDefault();
-
-        // Hide other sections
-        if (aboutSection) aboutSection.style.display = "none";
-        const productsSection = document.getElementById("products-section");
-        if (productsSection) productsSection.style.display = "none";
-
-        // Show the prediction form
-        const predictionFormSection = document.getElementById("prediction-form-section");
-        if (predictionFormSection) predictionFormSection.style.display = "block";
-
-        // Disable page scrolling
-        document.body.style.overflow = "hidden";
-      });
-
-      // Handle "Home" link click
-      document.getElementById("home-link").addEventListener("click", function (e) {
-        e.preventDefault();
-
-        // Show the About section
-        if (aboutSection) aboutSection.style.display = "block";
-
-        // Hide the prediction form
-        const predictionFormSection = document.getElementById("prediction-form-section");
-        if (predictionFormSection) predictionFormSection.style.display = "none";
-
-        // Enable scrolling
-        document.body.style.overflow = "auto";
-      });
-    });
-  </script>
-
-  <script>
-    // Toggle between login and register forms
-    document.getElementById("register-button").addEventListener("click", function() {
-      const loginForm = document.getElementById("login-form");
-      const registerForm = document.getElementById("register-form");
-      const formHeading = document.getElementById("form-heading");
-      const registerButton = document.getElementById("register-button");
-
-      if (loginForm.style.display !== "none") {
-        // Show register form, hide login form
-        loginForm.style.display = "none";
-        registerForm.style.display = "block";
-        formHeading.textContent = "Register";
-        registerButton.textContent = "Back to Login";
-      } else {
-        // Show login form, hide register form
-        loginForm.style.display = "block";
-        registerForm.style.display = "none";
-        formHeading.textContent = "Login";
-        registerButton.textContent = "Sign Up";
-      }
-    });
-
-    // Handle register form submission
-    document.getElementById("register-form").addEventListener("submit", async function(e) {
-      e.preventDefault();
-
-      const username = document.getElementById("reg-username").value.trim();
-      const password = document.getElementById("reg-password").value.trim();
-
-      if (!username || !password) {
-        alert("Please enter valid username and password.");
-        return;
-      }
-
-      try {
-        const response = await fetch("http://127.0.0.1:5001/register", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ username, password }),
-        });
-
-        if (!response.ok) {
-          throw new Error(`Server error: ${response.status}`);
-        }
-
-        const data = await response.json();
-
-        if (response.ok) {
-          alert("Registration successful. Please login.");
-          // Switch back to login form
-          document.getElementById("login-form").style.display = "block";
-          document.getElementById("register-form").style.display = "none";
-          document.getElementById("form-heading").textContent = "Login";
-          document.getElementById("register-button").textContent = "Sign Up";
-        } else {
-          alert(data.error || "Registration failed");
-        }
-      } catch (error) {
-        console.error("Error connecting to server:", error);
-        alert("Error connecting to server. Please try again later.");
-      }
-    });
-  </script>
-
-  <script>
-    // Handle "Products" link click to show products section and hide others
-    document.getElementById("products-link").addEventListener("click", function(e) {
-      e.preventDefault();
-
-      // Hide other sections
-      document.getElementById("about-section").style.display = "none";
-      document.getElementById("prediction-form-section").style.display = "none";
-
-      // Show products section
-      document.getElementById("products-section").style.display = "block";
-
-      // Disable page scrolling
-      document.body.style.overflow = "hidden";
-
-      // Render product cards
-      renderProductCards();
-    });
-
-    // Function to render product cards (sample static data)
-    let allProducts = [];
-
-    function renderProductCards(filteredProducts = null) {
-      const products = filteredProducts || allProducts;
-      const container = document.getElementById("products-container");
-      container.innerHTML = "";
-
-      if (!products || products.length === 0) {
-        container.innerHTML = "<p>No products found.</p>";
-        return;
-      }
-
-      products.forEach(product => {
-        const card = document.createElement("div");
-        card.className = "product-card";
-
-        card.innerHTML = `
-          <h3>${product.id}</h3>
-          <p><strong>Name:</strong> ${product.name}</p>
-          <p><strong>Weight:</strong> ${product.weight ? product.weight : "N/A"} kg</p>
-          <p><strong>Fat Content:</strong> ${product.fatContent}</p>
-          <p><strong>Price:</strong> ₹${product.price.toFixed(2)}</p>
-          <p><strong>Visibility:</strong> ${product.visibility ? product.visibility : "N/A"}</p>
-          <p><strong>Established Year:</strong> ${product.establishedYear ? product.establishedYear : "N/A"}</p>
-          <p><strong>Outlet Identifier:</strong> ${product.outletIdentifier ? product.outletIdentifier : "N/A"}</p>
-          <p><strong>Outlet Size:</strong> ${product.outletSize ? product.outletSize : "N/A"}</p>
-          <p><strong>Outlet Location Type:</strong> ${product.outletLocationType ? product.outletLocationType : "N/A"}</p>
-          <p><strong>Outlet Type:</strong> ${product.outletType ? product.outletType : "N/A"}</p>
-        `;
-
-        container.appendChild(card);
-      });
-    }
-
-    function fetchProducts() {
-      console.log("Fetching products...");
-      fetch("http://127.0.0.1:5001/products")
-        .then((response) => {
-          console.log("Server response received:", response);
-          if (!response.ok) {
-            throw new Error(`Server error: ${response.status} - ${response.statusText}`);
-          }
-          return response.json();
-        })
-        .then((products) => {
-          console.log("Products data:", products);
-          if (products.error) {
-            document.getElementById("products-container").innerHTML = `<p>Error loading products: ${products.error}</p>`;
-            return;
-          }
-          allProducts = products;
-          renderProductCards();
-        })
-        .catch((error) => {
-          console.error("Error fetching products:", error);
-          document.getElementById("products-container").innerHTML = `<p>Error connecting to server: ${error.message}. Please try again later.</p>`;
-        });
-    }
-
-    document.getElementById("products-link").addEventListener("click", function(e) {
-      e.preventDefault();
-
-      // Hide other sections
-      document.getElementById("about-section").style.display = "none";
-      document.getElementById("prediction-form-section").style.display = "none";
-
-      // Show products section
-      document.getElementById("products-section").style.display = "block";
-
-      // Disable page scrolling
-      document.body.style.overflow = "hidden";
-
-      // Fetch and render products
-      fetchProducts();
-    });
-
-    document.getElementById("search-button").addEventListener("click", function() {
-      const itemId = document.getElementById("search-item-id").value.trim().toLowerCase();
-      const yearInput = document.getElementById("search-established-year").value.trim();
-
-      const filtered = allProducts.filter(product => {
-        const matchesId = itemId ? product.id.toLowerCase().includes(itemId) : true;
-        const matchesYear = yearInput ? (product.establishedYear && product.establishedYear.toString() === yearInput) : true;
-        return matchesId && matchesYear;
-      });
-
-      renderProductCards(filtered);
-    });
-
-    document.getElementById("clear-button").addEventListener("click", function() {
-      document.getElementById("search-item-id").value = "";
-      document.getElementById("search-established-year").value = "";
-      renderProductCards();
-    });
-
-      const container = document.getElementById("products-container");
-      container.innerHTML = "";
-
-      products.forEach(product => {
-        const card = document.createElement("div");
-        card.className = "product-card";
-
-        card.innerHTML = `
-          <h3>${product.id}</h3>
-          <p><strong>Name:</strong> ${product.name}</p>
-          <p><strong>Weight:</strong> ${product.weight} kg</p>
-          <p><strong>Fat Content:</strong> ${product.fatContent}</p>
-          <p><strong>Price:</strong> ₹${product.price.toFixed(2)}</p>
-        `;
-
-        container.appendChild(card);
-      });
-  </script>
-
-  <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const productsSection = document.getElementById("products-section");
-    const productsContainer = document.getElementById("products-container");
-
-    // Ensure the products section and container exist
-    if (!productsSection) {
-      console.error("Error: 'products-section' element is missing in the DOM.");
-      return;
-    }
-    if (!productsContainer) {
-      console.error("Error: 'products-container' element is missing in the DOM.");
-      return;
-    }
-
-    // Fetch and render products
-    async function fetchProducts() {
-      console.log("Fetching products...");
-      try {
-        const response = await fetch("http://127.0.0.1:5001/products");
-        console.log("Server response received:", response);
-
-        if (!response.ok) {
-          throw new Error(`Server error: ${response.status} - ${response.statusText}`);
-        }
-
-        const products = await response.json();
-        console.log("Products data:", products);
-
-        if (products.error) {
-          productsContainer.innerHTML = `<p>Error loading products: ${products.error}</p>`;
-          return;
-        }
-
-        renderProductCards(products);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-        productsContainer.innerHTML = `<p>Error connecting to server. Please try again later.</p>`;
-      }
-    }
-
-    // Render product cards
-    function renderProductCards(products) {
-      productsContainer.innerHTML = ""; // Clear existing content
-
-      if (!products || products.length === 0) {
-        productsContainer.innerHTML = "<p>No products found.</p>";
-        return;
-      }
-
-      products.forEach((product) => {
-        const card = document.createElement("div");
-        card.className = "product-card";
-
-        card.innerHTML = `
-          <h3>${product.id}</h3>
-          <p><strong>Name:</strong> ${product.name}</p>
-          <p><strong>Weight:</strong> ${product.weight ? product.weight : "N/A"} kg</p>
-          <p><strong>Fat Content:</strong> ${product.fatContent}</p>
-          <p><strong>Price:</strong> ₹${product.price.toFixed(2)}</p>
-          <p><strong>Visibility:</strong> ${product.visibility ? product.visibility : "N/A"}</p>
-          <p><strong>Established Year:</strong> ${product.establishedYear ? product.establishedYear : "N/A"}</p>
-          <p><strong>Outlet Identifier:</strong> ${product.outletIdentifier ? product.outletIdentifier : "N/A"}</p>
-          <p><strong>Outlet Size:</strong> ${product.outletSize ? product.outletSize : "N/A"}</p>
-          <p><strong>Outlet Location Type:</strong> ${product.outletLocationType ? product.outletLocationType : "N/A"}</p>
-          <p><strong>Outlet Type:</strong> ${product.outletType ? product.outletType : "N/A"}</p>
-        `;
-
-        productsContainer.appendChild(card);
-      });
-    }
-
-    // Handle "Products" link click
-    document.getElementById("products-link").addEventListener("click", function (e) {
-      e.preventDefault();
-
-      // Hide other sections
-      document.getElementById("about-section").style.display = "none";
-      document.getElementById("prediction-form-section").style.display = "none";
-
-      // Show products section
-      productsSection.style.display = "block";
-
-      // Fetch and render products
-      fetchProducts();
-    });
   });
-  </script>
 
-  <!-- Inline script -->
-  <script>
-    console.log("This is the first script.");
-  </script>
+  // NAV
+  predict-link.onclick = () => {
+    about-section.style.display = "none";
+    prediction-form-section.style.display = "block";
+  };
 
-  <!-- External script -->
-  <script src="script1.js"></script>
+  home-link.onclick = () => {
+    prediction-form-section.style.display = "none";
+    about-section.style.display = "block";
+  };
 
-  <!-- Another inline script -->
-  <script>
-    console.log("This is the second script.");
-  </script>
+  // PREDICT
+  prediction-form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  <!-- Another external script -->
-  <script src="script2.js"></script>
-
-  <script>
-    document.getElementById("logout-link").addEventListener("click", function (e) {
-      e.preventDefault();
-
-      // Hide all sections
-      document.getElementById("navbar").style.display = "none";
-      document.getElementById("main-content").style.display = "none";
-      document.getElementById("products-section").style.display = "none";
-      document.getElementById("saved-predictions-section").style.display = "none";
-
-      // Show login card
-      document.getElementById("login-card").style.display = "block";
-      document.getElementById("login-heading").style.display = "block";
-      document.getElementById("register-button").style.display = "block";
-
-      // Reset form fields
-      document.getElementById("login-form").reset();
-      document.getElementById("register-form").reset();
+    const res = await fetch("/predict", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        Item_Identifier: Item_Identifier.value,
+        Item_Weight: Item_Weight.value,
+        Item_Fat_Content: Item_Fat_Content.value,
+        Item_Visibility: Item_Visibility.value,
+        Item_Type: Item_Type.value,
+        Item_MRP: Item_MRP.value,
+        Outlet_Identifier: Outlet_Identifier.value,
+        Outlet_Establishment_Year: Outlet_Establishment_Year.value,
+        Outlet_Size: Outlet_Size.value,
+        Outlet_Location_Type: Outlet_Location_Type.value,
+        Outlet_Type: Outlet_Type.value
+      })
     });
-  </script>
 
-  <script>
-    document.getElementById("saved-link").addEventListener("click", function (e) {
-      e.preventDefault();
+    const data = await res.json();
 
-      // Hide other sections
-      document.getElementById("about-section").style.display = "none";
-      document.getElementById("prediction-form-section").style.display = "none";
-      document.getElementById("products-section").style.display = "none";
+    // ✅ FIXED RESULT DISPLAY
+    result.innerText = data.error
+      ? data.error
+      : "₹ " + data.Item_Outlet_Sales;
+  });
 
-      // Show saved predictions section
-      document.getElementById("saved-predictions-section").style.display = "block";
+});
+</script>
 
-      // Disable page scrolling
-      document.body.style.overflow = "hidden";
-    });
-  </script>
 </body>
 </html>
